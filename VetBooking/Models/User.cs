@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace VetBooking.Models
 {
     public class User
@@ -10,5 +12,7 @@ namespace VetBooking.Models
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
         public bool IsAdmin { get; set; }
+
+        public ICollection<Meeting> Meetings { get; set; }
     }
 }
