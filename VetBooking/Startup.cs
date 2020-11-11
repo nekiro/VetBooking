@@ -9,12 +9,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using VetBooking.Areas.Identity.Data;
+using VetBooking.Data;
 using VetBooking.Models;
 
 namespace VetBooking
 {
     public class Startup
-    {
+    {      
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -26,9 +29,10 @@ namespace VetBooking
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddRazorPages();
 
-            services.AddDbContext<VetDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +54,7 @@ namespace VetBooking
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -57,6 +62,7 @@ namespace VetBooking
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

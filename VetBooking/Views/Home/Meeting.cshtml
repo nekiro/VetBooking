@@ -1,0 +1,98 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Meeting";
+}
+<style>
+    .bs-example {
+        margin: 20px;
+    }
+</style>
+
+
+    <div class="bs-example">
+        <ul id="myTab" class="nav nav-tabs row">
+            <li class="nav-item">
+                <a href="#home" class="nav-link active" data-toggle="tab">Umów się</a>
+            </li>
+            <li class="nav-item">
+                <a href="#profile" class="nav-link" data-toggle="tab">Aktualne wizyty</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade show active p-3" id="home">
+                <h4 class="mt-2 mb-4">Umów się na wizytę</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Temat wizyty</label>
+                        <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Temat wizyty">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Opis</label>
+                        <textarea class="form-control rounded-0" id="description" rows="4" placeholder="Opis" maxlength="2000"></textarea>
+                    </div>
+                    <h6 class="mb-4">Wybierz termin wizyty.</h6>
+                    <div class="row justify-content-center mt-3">
+                        <div class="col-lg-10">
+                            <div class="card border-0">
+                                    <div class="card-header bg-dark">
+                                        <div class="mx-0 mt-2 mb-2 row justify-content-sm-center justify-content-start px-1"> <span class="fa fa-calendar"></span>  <input type="text" id="dp1" class="datepicker ml-2 " placeholder="Wybierz date" name="date" readonly></div>
+                                    </div>
+                                    <div class="card-body p-3 p-sm-5">
+                                        <div class="row text-center mx-0">
+                                            <div class="col-md-2 col-4 my-1 px-2">
+                                                <div class="cell py-1">8:00</div>
+                                            </div>
+                                            <div class="col-md-2 col-4 my-1 px-2">
+                                                <div class="cell py-1">9:00</div>
+                                            </div>
+                                            <div class="col-md-2 col-4 my-1 px-2">
+                                                <div class="cell py-1">10:00</div>
+                                            </div>
+                                            <div class="col-md-2 col-4 my-1 px-2">
+                                                <div class="cell py-1">11:00</div>
+                                            </div>
+                                            <div class="col-md-2 col-4 my-1 px-2">
+                                                <div class="cell py-1">12:00</div>
+                                            </div>
+                                            <div class="col-md-2 col-4 my-1 px-2">
+                                                <div class="cell py-1">13:00</div>
+                                            </div>
+                                        </div>
+                                        <div class="row text-center mx-0">
+                                            <div class="col-md-2 col-4 my-1 px-2">
+                                                <div class="cell py-1">14:00</div>
+                                            </div>
+                                            <div class="col-md-2 col-4 my-1 px-2">
+                                                <div class="cell py-1">15:00</div>
+                                            </div>
+                                            <div class="col-md-2 col-4 my-1 px-2">
+                                                <div class="cell py-1">16:00</div>
+                                            </div>
+                                            <div class="col-md-2 col-4 my-1 px-2">
+                                                <div class="cell py-1">17:00</div>
+                                            </div>
+                                            <div class="col-md-2 col-4 my-1 px-2">
+                                                <div class="cell py-1">18:00</div>
+                                            </div>
+                                            <div class="col-md-2 col-4 my-1 px-2">
+                                                <div class="cell py-1">19:00</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary justify-content-center">Zatwierdź</button>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="profile">
+                <h4 class="mt-2">Profile tab content</h4>
+                <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
+            </div>            
+        </div>
+        <hr>
+        
+    </div>
