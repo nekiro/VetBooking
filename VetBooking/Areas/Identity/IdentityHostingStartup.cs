@@ -20,7 +20,7 @@ namespace VetBooking.Areas.Identity
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("VetDbContextConnection")));
 
-                services.AddDefaultIdentity<VetBookingUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                services.AddDefaultIdentity<VetBookingUser>(options => options.SignIn.RequireConfirmedAccount = false)
                     .AddEntityFrameworkStores<VetDbContext>();
             });
         }

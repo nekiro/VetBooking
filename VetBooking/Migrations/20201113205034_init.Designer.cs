@@ -10,8 +10,8 @@ using VetBooking.Data;
 namespace VetBooking.Migrations
 {
     [DbContext(typeof(VetDbContext))]
-    [Migration("20201103185331_Initial-Create")]
-    partial class InitialCreate
+    [Migration("20201113205034_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -156,6 +156,32 @@ namespace VetBooking.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("VetBooking.Areas.Identity.Data.Meeting", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Meetings");
+                });
+
             modelBuilder.Entity("VetBooking.Areas.Identity.Data.VetBookingUser", b =>
                 {
                     b.Property<string>("Id")
@@ -276,6 +302,13 @@ namespace VetBooking.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("VetBooking.Areas.Identity.Data.Meeting", b =>
+                {
+                    b.HasOne("VetBooking.Areas.Identity.Data.VetBookingUser", "User")
+                        .WithMany("Meetings")
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

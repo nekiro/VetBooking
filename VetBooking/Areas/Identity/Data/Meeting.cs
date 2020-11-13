@@ -1,7 +1,6 @@
 ﻿using System;
-using VetBooking.Areas.Identity.Data;
 
-namespace VetBooking.Models
+namespace VetBooking.Areas.Identity.Data
 {
     public class Meeting
     {
