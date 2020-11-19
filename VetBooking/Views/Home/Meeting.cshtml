@@ -11,88 +11,136 @@
 </style>
 
 
-    <div class="bs-example">
-        <ul id="myTab" class="nav nav-tabs row">
-            <li class="nav-item">
-                <a href="#home" class="nav-link active" data-toggle="tab">Umów się</a>
-            </li>
-            <li class="nav-item">
-                <a href="#profile" class="nav-link" data-toggle="tab">Aktualne wizyty</a>
-            </li>
-        </ul>
-        <div class="tab-content">
-            <div class="tab-pane fade show active p-3" id="home">
-                <h4 class="mt-2 mb-4">Umów się na wizytę</h4>
-                <form>
-                    <div class="form-group">
-                        <label for="name">Temat wizyty</label>
-                        <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Temat wizyty">
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Opis</label>
-                        <textarea class="form-control rounded-0" id="description" rows="4" placeholder="Opis" maxlength="2000"></textarea>
-                    </div>
-                    <h6 class="mb-4">Wybierz termin wizyty.</h6>
-                    <div class="row justify-content-center mt-3">
-                        <div class="col-lg-10">
-                            <div class="card border-0">
-                                    <div class="card-header bg-dark">
-                                        <div class="mx-0 mt-2 mb-2 row justify-content-sm-center justify-content-start px-1"> <span class="fa fa-calendar"></span>  <input type="text" id="dp1" class="datepicker ml-2 " placeholder="Wybierz date" name="date" readonly></div>
-                                    </div>
-                                    <div class="card-body p-3 p-sm-5">
-                                        <div class="row text-center mx-0">
-                                            <div class="col-md-2 col-4 my-1 px-2">
-                                                <div class="cell py-1">8:00</div>
-                                            </div>
-                                            <div class="col-md-2 col-4 my-1 px-2">
-                                                <div class="cell py-1">9:00</div>
-                                            </div>
-                                            <div class="col-md-2 col-4 my-1 px-2">
-                                                <div class="cell py-1">10:00</div>
-                                            </div>
-                                            <div class="col-md-2 col-4 my-1 px-2">
-                                                <div class="cell py-1">11:00</div>
-                                            </div>
-                                            <div class="col-md-2 col-4 my-1 px-2">
-                                                <div class="cell py-1">12:00</div>
-                                            </div>
-                                            <div class="col-md-2 col-4 my-1 px-2">
-                                                <div class="cell py-1">13:00</div>
-                                            </div>
-                                        </div>
-                                        <div class="row text-center mx-0">
-                                            <div class="col-md-2 col-4 my-1 px-2">
-                                                <div class="cell py-1">14:00</div>
-                                            </div>
-                                            <div class="col-md-2 col-4 my-1 px-2">
-                                                <div class="cell py-1">15:00</div>
-                                            </div>
-                                            <div class="col-md-2 col-4 my-1 px-2">
-                                                <div class="cell py-1">16:00</div>
-                                            </div>
-                                            <div class="col-md-2 col-4 my-1 px-2">
-                                                <div class="cell py-1">17:00</div>
-                                            </div>
-                                            <div class="col-md-2 col-4 my-1 px-2">
-                                                <div class="cell py-1">18:00</div>
-                                            </div>
-                                            <div class="col-md-2 col-4 my-1 px-2">
-                                                <div class="cell py-1">19:00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
+<div class="bs-example">
+    <ul id="myTab" class="nav nav-tabs row">
+        <li class="nav-item">
+            <a href="#home" class="nav-link active" data-toggle="tab">Umów się</a>
+        </li>
+        <li class="nav-item">
+            <a href="#profile" class="nav-link" data-toggle="tab">Aktualne wizyty</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade show active p-3" id="home">
+            <h4 class="mt-2 mb-4">Umów się na wizytę</h4>
+            <form>
+                <div class="form-group">
+                    <label for="name">Temat wizyty</label>
+                    <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Temat wizyty">
+                </div>
+                <div class="form-group">
+                    <label for="description">Opis <br /> <span class="small">Proszę podać gatunek, rasę, wiek zwierzęcia oraz w skrócie opisać czego będzie dotyczyła wizyta.</span></label>
+                    <textarea class="form-control rounded-0" id="description" rows="4" placeholder="Opis" maxlength="2000"></textarea>
+                </div>
+                <h6 class="mb-4">Wybierz termin wizyty.</h6>              
 
-                    <button type="submit" class="btn btn-primary justify-content-center">Zatwierdź</button>
-                </form>
-            </div>
-            <div class="tab-pane fade" id="profile">
-                <h4 class="mt-2">Profile tab content</h4>
-                <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
-            </div>            
+
+                <input id="datetimepicker" type="text" placeholder="wybierz datę">
+                <input id="timepicker" type="text" placeholder="wybierz godzinę" disabled>
+                </br>
+                <button type="submit" class=" mt-4 btn btn-primary centerButton">Zatwierdź</button>
+            </form>
         </div>
-        <hr>
-        
+        <div class="tab-pane fade" id="profile">
+            <h4 class="mt-2">Aktualne wizyty</h4>
+            <table class="table">
+                <tr>
+                    <th>
+                        Temat
+                    </th>
+                    <th>
+                        Opis
+                    </th>
+                    <th>
+                        Data
+                    </th>
+                    <th></th>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        Przykładowy temat
+                    </td>
+                    <td>
+                        Przykładowy opis
+                    </td>
+                    <td>
+                        Przykładowa data
+                    </td>
+                    <td>
+
+                        <a style="color: blue; text-decoration: underline; cursor: pointer; ">Odwołaj</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Przykładowy temat
+                    </td>
+                    <td>
+                        Przykładowy opis
+                    </td>
+                    <td>
+                        Przykładowa data
+                    </td>
+                    <td>
+
+                        <a style="color: blue; text-decoration: underline; cursor: pointer; ">Odwołaj</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Przykładowy temat
+                    </td>
+                    <td>
+                        Przykładowy opis
+                    </td>
+                    <td>
+                        Przykładowa data
+                    </td>
+                    <td>
+
+                        <a style="color: blue; text-decoration: underline; cursor: pointer; ">Odwołaj</a>
+                    </td>
+                </tr>
+
+
+            </table>
+        </div>
     </div>
+    <hr>
+
+</div>
+
+
+<!--https://xdsoft.net/jqplugins/datetimepicker/-->
+<script>
+    
+
+    $.datetimepicker.setLocale('pl');
+
+    $('#datetimepicker').datetimepicker({
+        timepicker: false,
+        minDate: 0,
+        format: 'Y/m/d',
+        disabledWeekDays: [0]
+    });
+
+    $('#timepicker').datetimepicker({
+        datepicker: false,
+        minTime: '8:00',
+        maxTime: '19:01',
+        format: 'H:i'
+    });
+    $('#datetimepicker').change(function () {
+        if ($('#datetimepicker').val() != '') {
+            $("#timepicker").removeAttr('disabled');
+        }
+        else {
+            $("#timepicker").prop('disabled', true);
+            $("#timepicker").val('');
+        }
+    });
+
+    
+</script>
