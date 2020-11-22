@@ -10,6 +10,7 @@
     }
 </style>
 
+@model ICollection<VetBooking.Areas.Identity.Data.Meeting>
 
 <div class="bs-example">
     <ul id="myTab" class="nav nav-tabs row">
@@ -23,20 +24,19 @@
     <div class="tab-content">
         <div class="tab-pane fade show active p-3" id="home">
             <h4 class="mt-2 mb-4">Umów się na wizytę</h4>
-            <form>
+            <form action="/home/Create" method="post">
                 <div class="form-group">
                     <label for="name">Temat wizyty</label>
-                    <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Temat wizyty">
+                    <input type="text" class="form-control" id="name" name="Name" aria-describedby="name" placeholder="Temat wizyty">
                 </div>
                 <div class="form-group">
                     <label for="description">Opis <br /> <span class="small">Proszę podać gatunek, rasę, wiek zwierzęcia oraz w skrócie opisać czego będzie dotyczyła wizyta.</span></label>
-                    <textarea class="form-control rounded-0" id="description" rows="4" placeholder="Opis" maxlength="2000"></textarea>
+                    <textarea class="form-control rounded-0" name="Description" id="description" rows="4" placeholder="Opis" maxlength="2000"></textarea>
                 </div>
-                <h6 class="mb-4">Wybierz termin wizyty.</h6>              
+                <h6 class="mb-4">Wybierz termin wizyty.</h6>
 
-
-                <input id="datetimepicker" type="text" placeholder="wybierz datę">
-                <input id="timepicker" type="text" placeholder="wybierz godzinę" disabled>
+                <input id="datetimepicker" name="Date" type="text" placeholder="wybierz datę">
+                <input id="timepicker" name="Time" type="text" placeholder="wybierz godzinę" disabled>
                 </br>
                 <button type="submit" class=" mt-4 btn btn-primary centerButton">Zatwierdź</button>
             </form>
@@ -44,67 +44,33 @@
         <div class="tab-pane fade" id="profile">
             <h4 class="mt-2">Aktualne wizyty</h4>
             <table class="table">
-                <tr>
-                    <th>
-                        Temat
-                    </th>
-                    <th>
-                        Opis
-                    </th>
-                    <th>
-                        Data
-                    </th>
-                    <th></th>
-                </tr>
-
-
-                <tr>
-                    <td>
-                        Przykładowy temat
-                    </td>
-                    <td>
-                        Przykładowy opis
-                    </td>
-                    <td>
-                        Przykładowa data
-                    </td>
-                    <td>
-
-                        <a style="color: blue; text-decoration: underline; cursor: pointer; ">Odwołaj</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Przykładowy temat
-                    </td>
-                    <td>
-                        Przykładowy opis
-                    </td>
-                    <td>
-                        Przykładowa data
-                    </td>
-                    <td>
-
-                        <a style="color: blue; text-decoration: underline; cursor: pointer; ">Odwołaj</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Przykładowy temat
-                    </td>
-                    <td>
-                        Przykładowy opis
-                    </td>
-                    <td>
-                        Przykładowa data
-                    </td>
-                    <td>
-
-                        <a style="color: blue; text-decoration: underline; cursor: pointer; ">Odwołaj</a>
-                    </td>
-                </tr>
-
-
+                <thead>
+                    <tr>
+                        <th>Nazwa</th>
+                        <th>Opis</th>
+                        <th>Data</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+                            <td>
+                                <a asp-action="Delete" asp-route-id="@item.ID" style="color: blue; text-decoration: underline; cursor: pointer; ">Odwołaj</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
             </table>
         </div>
     </div>
@@ -112,10 +78,9 @@
 
 </div>
 
-
 <!--https://xdsoft.net/jqplugins/datetimepicker/-->
 <script>
-    
+
 
     $.datetimepicker.setLocale('pl');
 
@@ -142,5 +107,5 @@
         }
     });
 
-    
+
 </script>

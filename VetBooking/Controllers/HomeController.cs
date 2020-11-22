@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using VetBooking.Areas.Identity.Data;
+using VetBooking.Data;
 using VetBooking.Models;
 
 namespace VetBooking.Controllers
@@ -13,6 +15,14 @@ namespace VetBooking.Controllers
     [Authorize]
     public class HomeController : Controller
     {
+        private readonly VetDbContext _context;
+        private UserManager<VetBookingUser> _userManager;
+
+        public HomeController(VetDbContext context, UserManager<VetBookingUser> userManager)
+        {
+            _context = context;
+            _userManager = userManager;
+        }
 
         public IActionResult Index()
         {
@@ -23,8 +33,34 @@ namespace VetBooking.Controllers
         {
             return View();
         }
-        public IActionResult Meeting()
+
+        public async Task<IActionResult> Meeting()
         {
+            string userId = _userManager.GetUserId(this.User);
+            var meetings = await _context.Meetings.Where(m => m.User.Id == userId).ToListAsync();
+            return View(meetings);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(NewMeetingForm model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Bad model");
+            }
+
+            VetBookingUser user = await _userManager.FindByIdAsync(_userManager.GetUserId(this.User));
+
+            await _context.Meetings.AddAsync(new Meeting() { Name = model.Name, Description = model.Description, Date = model.Date.Add(model.Time), User = user });
+            await _context.SaveChangesAsync();
+            return View();
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var meeting = new Meeting() { ID = id };
+            _context.Meetings.Remove(meeting);
+            await _context.SaveChangesAsync();
             return View();
         }
 
