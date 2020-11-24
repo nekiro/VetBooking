@@ -1,10 +1,18 @@
 ﻿
-@{
-    ViewData["Title"] = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@{ ViewData["Title"] = "Create";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<h1>Create</h1>
 
-New meeting has been added, some html magic here, so it's nicer to the eye.
-Redirect to 'my' meetings after x seconds?
+<div class="verAndHorCenter">
+    <div><h5 class="verAndHorCenter"><span class="badge"><i class="fas fa-check fa-2x" style="color: #9CCC65;"></i></span>Pomyślnie zapisałeś się na wizytę!</h5>
+         <p class="text-center mt-2"> Wizyty sprawdzisz w panelu <a asp-area="" asp-controller="Home" asp-action="Meeting">Wizyt</a>. Zostaniesz tam przeniesiony za 2 sekundy.</p>
+    </div>
+    
+</div>
+
+
+<script>
+    window.setTimeout(function () {
+        window.location.href = 'https://localhost:44326/Home/Meeting';
+    }, 2000);
+</script>

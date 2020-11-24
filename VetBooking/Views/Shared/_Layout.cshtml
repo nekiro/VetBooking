@@ -18,11 +18,34 @@
     <script src="~/js/jquery.datetimepicker.full.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 
     <link rel="stylesheet" href="~/css/site.css" />
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .container {
+            height: 80%;
+        }
+
+        #main {
+            height: 100%;
+        }
+
+        .verAndHorCenter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70%;
+        }
+
         textarea {
             resize: none !important;
         }
@@ -41,8 +64,6 @@
                 box-shadow: none !important;
                 outline-width: 0
             }
-
-
     </style>
 
 
@@ -65,7 +86,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Meeting">Meeting</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Meeting">Wizyty</a>
                         </li>
                     </ul>
                 </div>
@@ -76,7 +97,7 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main id="main" role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
@@ -86,7 +107,7 @@
             &copy; 2020 - VetBooking - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>

@@ -30,8 +30,6 @@ namespace VetBooking
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
-
-
             
         }
 
