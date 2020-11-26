@@ -162,7 +162,7 @@
 
 
     var today = new Date();
-    var time = (today.getHours() + 1) + ":" + today.getMinutes();
+    var time = (today.getHours() + 1);
     var date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
 
     $.datetimepicker.setLocale('pl');
@@ -187,7 +187,7 @@
     timepicker.datetimepicker({
         datepicker: false,
         minTime: '8:00',
-        maxTime: '19:01',
+        maxTime: '19:59',
         defaultTime: '12:00',
         format: 'H:i'
     });
@@ -199,7 +199,13 @@
 
             if (date === $("#datetimepicker").val()) {
                 timepicker.datetimepicker({
-                    minTime: time.toString()
+                    minTime: time.toString() + ':00'
+                });
+            }
+            else {
+                timepicker.datetimepicker({
+                    minTime: '8:00',
+                    maxTime: '19:59'
                 });
             }
 
