@@ -1,17 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 using VetBooking.Areas.Identity.Data;
 using VetBooking.Data;
-using VetBooking.Models;
+using WebPWrecover.Services;
 
 namespace VetBooking
 {
@@ -30,7 +28,35 @@ namespace VetBooking
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
-            
+
+            // email verification
+            services.AddTransient<IEmailSender, EmailSender>();
+            services.Configure<Services.MailSettings>(Configuration.GetSection("MailSettings"));
+
+            services.AddDbContext<VetDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("VetDbContextConnection")));
+
+            services.AddDefaultIdentity<VetBookingUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<VetDbContext>();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Password settings.
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 1;
+                options.Password.RequiredUniqueChars = 0;
+
+                // Lockout settings.
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.AllowedForNewUsers = true;
+
+                // User settings.
+                options.User.AllowedUserNameCharacters =
+                "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+                options.User.RequireUniqueEmail = false;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

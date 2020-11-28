@@ -64,6 +64,12 @@ namespace VetBooking.Controllers
             return View();
         }
 
+        public async Task<IActionResult> ConfirmEmail(string userId)
+        {
+            Console.WriteLine(userId);
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
