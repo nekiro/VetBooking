@@ -1,0 +1,285 @@
+﻿
+@{ ViewData["Title"] = "AdminView"; }
+<style>
+    .bs-example {
+        margin: 20px;
+    }
+</style>
+
+<div class="bs-example">
+    <ul id="myTab" class="nav nav-tabs row">
+        <li class="nav-item">
+            <a href="#home" class="nav-link active" data-toggle="tab">Aktualne wizyty</a>
+        </li>
+        <li class="nav-item">
+            <a href="#profile" class="nav-link" data-toggle="tab">Zrealizowane wizyty</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="home">
+            <h4 class="mt-2">Aktualne wizyty</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nazwa</th>
+                        <th>Opis</th>
+                        <th>Data</th>
+                        <th>Możliwe akcje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            przykład
+                        </td>
+                        <td>
+                            przykład
+                        </td>
+                        <td>
+                            przykład
+                        </td>
+                        <td>
+                            <a style="color: blue; text-decoration: underline; cursor: pointer; ">Odwołaj</a>
+                            <a data-toggle="modal" data-target="#exampleModal" class="ml-2" style="color: blue; text-decoration: underline; cursor: pointer; ">Detale</a>
+                            <a class="ml-2" style="color: blue; text-decoration: underline; cursor: pointer; ">Zrealizuj</a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Przykładowa wizyta</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                Nazwa
+                            </dt>
+
+                            <dd>
+                                przykład nazwy
+                            </dd>
+                            
+                            <dt>
+                                Data
+                            </dt>
+
+                            <dd>
+                                przykład daty
+                            </dd>
+                            
+                            <dt>
+                                Imię i nazwisko
+                            </dt>
+
+                            <dd>
+                                przykładowe imię i nazwisko
+                            </dd>
+                            
+                            <dt>
+                                Numer telefonu
+                            </dt>
+
+                            <dd>
+                                przykładowy numer telefonu
+                            </dd>
+                            
+                            <dt>
+                                Opis
+                            </dt>
+
+                            <dd>
+                                przykładowy opis
+                            </dd>
+                            
+                        </dl>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="profile">
+            <h4 class="mt-2">Zrealizowane wizyty</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nazwa</th>
+                        <th>Opis</th>
+                        <th>Data</th>
+                        <th>Możliwe akcje</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td>
+                            przykład
+                        </td>
+                        <td>
+                            przykład
+                        </td>
+                        <td>
+                            przykład
+                        </td>
+                        <td>
+                            <a data-toggle="modal" data-target="#exampleModal"  class="ml-2" style="color: blue; text-decoration: underline; cursor: pointer; ">Detale</a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+
+
+
+<!--https://xdsoft.net/jqplugins/datetimepicker/-->
+<script>
+    $('#namecheck').hide();
+    $('#descriptioncheck').hide();
+    $('#pickercheck').hide();
+    $(document).ready(function () {
+
+        let nameError = true;
+        let descriptionError = true;
+        let pickerError = true;
+
+        $('#name').keyup(function () {
+            validateName();
+        });
+        $('#description').keyup(function () {
+            validateDescription();
+        });
+        $('#datetimepicker').keyup(function () {
+            validatePicker();
+        });
+
+        function validateName() {
+            if ($('#name').val().length == '') {
+                $('#namecheck').show();
+                nameError = false;
+                return false;
+            }
+            else {
+                $('#namecheck').hide();
+                nameError = true;
+            }
+        }
+
+        function validateDescription() {
+            if ($('#description').val().length == '') {
+                $('#descriptioncheck').show();
+                descriptionError = false;
+                return false;
+            }
+            else {
+                $('#descriptioncheck').hide();
+                descriptionError = true;
+            }
+        }
+
+        function validatePicker() {
+            if ($('#datetimepicker').val().length == '') {
+                $('#pickercheck').show();
+                pickerError = false;
+                return false;
+            }
+            else {
+                $('#pickercheck').hide();
+                pickerError = true;
+            }
+        }
+        function validatePicker() {
+            if (($('#datetimepicker').val().length == '') || ($('#timepicker').val().length == '')) {
+                $('#pickercheck').show();
+                pickerError = false;
+                return false;
+            }
+            else {
+                $('#pickercheck').hide();
+                pickerError = true;
+            }
+        }
+
+        $('#submitBtn').click(function () {
+            validateName();
+            validateDescription();
+            validatePicker();
+            if (nameError == true && descriptionError == true && pickerError == true) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+    });
+
+
+
+
+    var today = new Date();
+    var time = (today.getHours() + 1);
+    var date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
+
+    $.datetimepicker.setLocale('pl');
+
+    $('#datetimepicker').datetimepicker({
+        timepicker: false,
+        minDate: 0,
+        maxDate: '+1970/01/18',
+        format: 'Y/m/d',
+        disabledWeekDays: [0]
+    });
+
+    if (today.getHours() >= 19) {
+        $('#datetimepicker').datetimepicker({
+            minDate: '+1970/01/02',
+            defaultDate: '+1970/01/02'
+        });
+    }
+
+    var timepicker = $('#timepicker');
+
+    timepicker.datetimepicker({
+        datepicker: false,
+        minTime: '8:00',
+        maxTime: '19:59',
+        defaultTime: '12:00',
+        format: 'H:i'
+    });
+
+
+    $('#datetimepicker').change(function () {
+        if ($('#datetimepicker').val() != '') {
+            $("#timepicker").removeAttr('disabled');
+
+            if (date === $("#datetimepicker").val()) {
+                timepicker.datetimepicker({
+                    minTime: time.toString() + ':00'
+                });
+            }
+            else {
+                timepicker.datetimepicker({
+                    minTime: '8:00',
+                    maxTime: '19:59'
+                });
+            }
+
+        }
+        else {
+            $("#timepicker").prop('disabled', true);
+            $("#timepicker").val('');
+        }
+
+    });</script>

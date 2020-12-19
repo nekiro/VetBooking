@@ -74,6 +74,8 @@ namespace VetBooking.Areas.Identity.Pages.Account
 
             [Required]
             [Phone]
+            [MaxLength(9)]
+            [MinLength(9)]
             [Display(Name = "Phone Number")]
             public string PhoneNumber { get; set; }
         }

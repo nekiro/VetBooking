@@ -29,6 +29,12 @@ namespace VetBooking.Controllers
             return View();
         }
 
+        public IActionResult AdminView()
+        {
+            return View();
+        }
+
+
         public IActionResult Privacy()
         {
             return View();
