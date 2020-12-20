@@ -10,8 +10,8 @@ using VetBooking.Data;
 namespace VetBooking.Migrations
 {
     [DbContext(typeof(VetDbContext))]
-    [Migration("20201220154416_init")]
-    partial class init
+    [Migration("20201220175122_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

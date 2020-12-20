@@ -33,6 +33,11 @@ namespace VetBooking.Controllers
         {
             return View();
         }
+        
+        public IActionResult Users()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {
@@ -55,6 +60,7 @@ namespace VetBooking.Controllers
 
             return View(await _context.Meetings.Where(m => m.User == user).ToListAsync());
         }
+        
 
         [HttpPost]
         public async Task<IActionResult> Create(NewMeetingForm model)
