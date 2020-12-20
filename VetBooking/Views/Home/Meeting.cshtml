@@ -56,20 +56,21 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                <a asp-action="Delete" asp-route-id="@item.ID" style="color: blue; text-decoration: underline; cursor: pointer; ">Odwołaj</a>
-            </td>
-        </tr>}
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            <a asp-action="Delete" asp-route-id="@item" style="color: blue; text-decoration: underline; cursor: pointer; ">Odwołaj</a>
+                        </td>
+                    </tr>
+                    }
                 </tbody>
             </table>
         </div>

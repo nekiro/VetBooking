@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VetBooking.Areas.Identity.Data
 {
-    // Add profile data for application users by adding properties to the VetBookingUser class
     public class VetBookingUser : IdentityUser
     {
         [PersonalData]
@@ -13,6 +12,7 @@ namespace VetBooking.Areas.Identity.Data
         [PersonalData]
         [Column(TypeName = "nvarchar(100)")]
         public string LastName { get; set; }
+        public bool IsAdmin { get; set; }
 
         public ICollection<Meeting> Meetings { get; set; }
     }

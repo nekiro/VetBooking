@@ -41,7 +41,8 @@ namespace VetBooking.Migrations
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(100)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(100)", nullable: true)
+                    LastName = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    IsAdmin = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -176,6 +177,30 @@ namespace VetBooking.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "MeetingsHistory",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false),
+                    Cancelled = table.Column<bool>(nullable: false),
+                    Annotation = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MeetingsHistory", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_MeetingsHistory_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -219,6 +244,11 @@ namespace VetBooking.Migrations
                 name: "IX_Meetings_UserId",
                 table: "Meetings",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MeetingsHistory_UserId",
+                table: "MeetingsHistory",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -240,6 +270,9 @@ namespace VetBooking.Migrations
 
             migrationBuilder.DropTable(
                 name: "Meetings");
+
+            migrationBuilder.DropTable(
+                name: "MeetingsHistory");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

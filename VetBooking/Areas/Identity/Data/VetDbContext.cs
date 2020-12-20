@@ -21,5 +21,6 @@ namespace VetBooking.Data
 
         public DbSet<VetBookingUser> VetBookingUsers { get; set; }
         public DbSet<Meeting> Meetings { get; set; }
+        public DbSet<OldMeeting> MeetingsHistory { get; set; }
     }
 }

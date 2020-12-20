@@ -24,7 +24,7 @@ namespace VetBooking.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             return View();
         }
@@ -34,7 +34,6 @@ namespace VetBooking.Controllers
             return View();
         }
 
-
         public IActionResult Privacy()
         {
             return View();
@@ -42,9 +41,19 @@ namespace VetBooking.Controllers
 
         public async Task<IActionResult> Meeting()
         {
-            string userId = _userManager.GetUserId(this.User);
-            var meetings = await _context.Meetings.Where(m => m.User.Id == userId).ToListAsync();
-            return View(meetings);
+            VetBookingUser user = await _userManager.FindByIdAsync(_userManager.GetUserId(this.User));
+            if (user == null)
+            {
+                return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
+
+            if (user.IsAdmin)
+            {
+                // show admin meeting panel
+                return View("AdminView", await _context.Meetings.ToListAsync());
+            }
+
+            return View(await _context.Meetings.Where(m => m.User == user).ToListAsync());
         }
 
         [HttpPost]
@@ -62,9 +71,17 @@ namespace VetBooking.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(Meeting meeting)
         {
-            var meeting = new Meeting() { ID = id };
+            _context.Meetings.Remove(meeting);
+            await _context.SaveChangesAsync();
+            return View();
+        }
+
+        public async Task<IActionResult> MoveToHistory(Meeting meeting)
+        {
+            // moves meeting to already due meetings
+            _context.MeetingsHistory.Add(new OldMeeting(meeting) { Cancelled = false, Annotation = "Completed by Admin" });
             _context.Meetings.Remove(meeting);
             await _context.SaveChangesAsync();
             return View();

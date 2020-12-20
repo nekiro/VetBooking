@@ -10,7 +10,7 @@ using VetBooking.Data;
 namespace VetBooking.Migrations
 {
     [DbContext(typeof(VetDbContext))]
-    [Migration("20201113205034_init")]
+    [Migration("20201220154416_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -182,6 +182,38 @@ namespace VetBooking.Migrations
                     b.ToTable("Meetings");
                 });
 
+            modelBuilder.Entity("VetBooking.Areas.Identity.Data.OldMeeting", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Annotation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Cancelled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("MeetingsHistory");
+                });
+
             modelBuilder.Entity("VetBooking.Areas.Identity.Data.VetBookingUser", b =>
                 {
                     b.Property<string>("Id")
@@ -203,6 +235,9 @@ namespace VetBooking.Migrations
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(100)");
@@ -308,6 +343,13 @@ namespace VetBooking.Migrations
                 {
                     b.HasOne("VetBooking.Areas.Identity.Data.VetBookingUser", "User")
                         .WithMany("Meetings")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("VetBooking.Areas.Identity.Data.OldMeeting", b =>
+                {
+                    b.HasOne("VetBooking.Areas.Identity.Data.VetBookingUser", "User")
+                        .WithMany()
                         .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
