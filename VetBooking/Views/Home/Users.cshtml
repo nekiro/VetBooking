@@ -1,52 +1,38 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{ ViewData["Title"] = "Users"; }
+﻿@{ ViewData["Title"] = "Users"; }
+
+@model ICollection<VetBooking.Areas.Identity.Data.VetBookingUser>
 
 <h1>Użytkownicy</h1>
 <br />
 <form>
-    <p>
-        Nazwisko: <input type="text"/>
-        Email: <input type="text"/>
+    @using (Html.BeginForm("Users", "Home", FormMethod.Get))
+    {
+        @Html.Raw("Imie:") <input type="text" name="FirstName" id="FirstName" />
+        @Html.Raw("Nazwisko:")<input type="text" name="LastName" id="LastName" />
+        @Html.Raw("Email:")<input type="text" name="Email" id="Email" />
         <input type="submit" value="Wyszukaj" />
-    </p>
+    }
 </form>
 
 <br />
 <table class="table">
     <thead>
         <tr>
-            <th>
-                Imię
-            </th>
-            <th>
-                Nazwisko
-            </th>
-            <th>
-                E-mail
-            </th>
-            <th>
-                Numer Telefonu
-            </th>
-            <th></th>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>E-mail</th>
+            <th>Numer Telefonu</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>
-                Stefan
-            </td>
-            <td>
-                XDDD
-            </td>
-            <td>
-                email@gmail.com
-            </td>
-            <td>
-                123456789
-            </td>
-        </tr>
-
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+            </tr>
+        }
     </tbody>
 </table>

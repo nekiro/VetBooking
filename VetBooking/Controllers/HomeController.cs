@@ -34,9 +34,15 @@ namespace VetBooking.Controllers
             return View();
         }
         
-        public IActionResult Users()
+        public async Task<IActionResult> Users(string FirstName, string LastName, string Email)
         {
-            return View();
+            if (!string.IsNullOrEmpty(FirstName) || !string.IsNullOrEmpty(LastName) || !string.IsNullOrEmpty(Email))
+            {
+                var users = await _context.VetBookingUsers.Where(u => u.FirstName == FirstName || u.LastName == LastName || u.Email == Email).ToListAsync();
+                return View(users);
+            }
+
+            return View(await _context.VetBookingUsers.ToListAsync());
         }
 
         public IActionResult Privacy()
@@ -60,7 +66,6 @@ namespace VetBooking.Controllers
 
             return View(await _context.Meetings.Where(m => m.User == user).ToListAsync());
         }
-        
 
         [HttpPost]
         public async Task<IActionResult> Create(NewMeetingForm model)
