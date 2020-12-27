@@ -84,7 +84,7 @@ namespace VetBooking.Controllers
 
         public async Task<IActionResult> Delete(Meeting meeting)
         {
-            _context.Meetings.Remove(meeting);
+            _context.Meetings.Remove(new Meeting() { ID = meeting.ID });
             await _context.SaveChangesAsync();
             return View();
         }
@@ -93,7 +93,7 @@ namespace VetBooking.Controllers
         {
             // moves meeting to already due meetings
             _context.MeetingsHistory.Add(new OldMeeting(meeting) { Cancelled = false, Annotation = "Completed by Admin" });
-            _context.Meetings.Remove(meeting);
+            _context.Meetings.Remove(new Meeting() { ID = meeting.ID });
             await _context.SaveChangesAsync();
             return View();
         }
