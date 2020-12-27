@@ -1,0 +1,17 @@
+﻿
+@{ ViewData["Title"] = "Move To History";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<div class="verAndHorCenter">
+    <div>
+        <h5 class="verAndHorCenter"><span class="badge"><i class="fas fa-check fa-2x" style="color: #9CCC65;"></i></span>Pomyślnie odwołałeś wizytę!</h5>
+        <p class="text-center mt-2"> Wizyty sprawdzisz w panelu <a asp-area="" asp-controller="Home" asp-action="AdminView">Wizyt</a>. Zostaniesz tam przeniesiony za 2 sekundy.</p>
+    </div>
+
+</div>
+
+<script>
+    window.setTimeout(function () {
+        window.location.href = 'https://localhost:5001/Home/AdminView';
+    }, 2000);
+</script>

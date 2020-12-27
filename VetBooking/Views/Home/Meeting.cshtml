@@ -67,7 +67,7 @@
                             @Html.DisplayFor(modelItem => item.Date)
                         </td>
                         <td>
-                            <a asp-action="Delete" asp-route-id="@item" style="color: blue; text-decoration: underline; cursor: pointer; ">Odwołaj</a>
+                            @Html.ActionLink("Odwołaj", "Delete", @item)
                         </td>
                     </tr>
                     }

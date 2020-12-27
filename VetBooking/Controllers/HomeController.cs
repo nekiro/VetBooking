@@ -61,7 +61,7 @@ namespace VetBooking.Controllers
             if (user.IsAdmin)
             {
                 // show admin meeting panel
-                return View("AdminView", await _context.Meetings.ToListAsync());
+                return View("AdminView", Tuple.Create(await _context.Meetings.ToListAsync(), await _context.MeetingsHistory.ToListAsync()));
             }
 
             return View(await _context.Meetings.Where(m => m.User == user).ToListAsync());

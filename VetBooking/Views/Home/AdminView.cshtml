@@ -6,7 +6,7 @@
     }
 </style>
 
-@model ICollection<VetBooking.Areas.Identity.Data.Meeting>
+@model Tuple<List<VetBooking.Areas.Identity.Data.Meeting>, List<VetBooking.Areas.Identity.Data.OldMeeting>>
 
 <div class="bs-example">
     <ul id="myTab" class="nav nav-tabs row">
@@ -30,7 +30,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.Item1)
                     {
                     <tr>
                         <td>
@@ -43,9 +43,9 @@
                             @Html.DisplayFor(modelItem => item.Date)
                         </td>
                         <td>
-                            <a asp-action="Delete" asp-route-id="@item" style="color: blue; text-decoration: underline; cursor: pointer; ">Odwołaj</a>
+                            @Html.ActionLink("Odwołaj", "Delete", @item)
                             <a data-toggle="modal" data-target="#exampleModal" class="ml-2" style="color: blue; text-decoration: underline; cursor: pointer; ">Detale</a>
-                            <a asp-action="MoveToHistory" asp-route-id="@item" class="ml-2" style="color: blue; text-decoration: underline; cursor: pointer; ">Zrealizuj</a>
+                            @Html.ActionLink("Zrealizuj", "MoveToHistory", @item)
                         </td>
                     </tr>
                     }
@@ -125,7 +125,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.Item2)
                     {
                         <tr>
                             <td>

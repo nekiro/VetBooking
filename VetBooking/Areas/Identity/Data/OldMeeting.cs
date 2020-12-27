@@ -7,7 +7,6 @@ namespace VetBooking.Areas.Identity.Data
         public OldMeeting() { } // default
         public OldMeeting(Meeting meeting)
         {
-            ID = meeting.ID;
             Name = meeting.Name;
             Description = meeting.Description;
             Date = meeting.Date;
