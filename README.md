@@ -13,6 +13,7 @@
 3. Unzip PHP somewhere
 4. Install Composer and point to PHP location you unzipped to in step 3.
 5. You might need to reopen all terminals for php global var to update
+6. Open project directory in terminal and write `composer install`
 
 ### Linux
 ?
@@ -23,7 +24,6 @@
 
 1. Open repository with vscode.
 2. Open terminal write: 
-
     `php artisan serve`
 
 ### Linux
