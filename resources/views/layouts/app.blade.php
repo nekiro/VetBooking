@@ -24,8 +24,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <div class="container-fluid vh-100" id="app">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm row">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -81,9 +81,13 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 bg-dark row align-items-center">
             @yield('content')
         </main>
+
+        <footer class="p-4 row">
+            Footer
+        </footer>
     </div>
 </body>
 </html>

@@ -1,3 +1,11 @@
 html, body {
     font-family: 'Roboto', sans-serif;
 }
+
+#app {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    height: 100%;
+    width: 100%;
+}
