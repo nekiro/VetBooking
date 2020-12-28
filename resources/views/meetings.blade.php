@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                   Welcome to VetBooking.
+                   Meetings.
                 </div>
             </div>
         </div>
