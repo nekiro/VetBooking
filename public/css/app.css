@@ -9,3 +9,56 @@ html, body {
     height: 100%;
     width: 100%;
 }
+#meetings{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    height: 100%;
+    width: 100%;
+}
+.login_container{
+    background-color: #00a3e8;
+}
+.loginOrRegister{
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.178);
+    border-radius: 20px
+}
+.loginOrRegister a{
+    color: #00a3e8;
+}
+.login{
+    background-color: #fff;
+    padding: 1rem 0 0 0;
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+}
+.login_head{
+    color: #00a3e8;
+    margin-top:2rem;
+}
+.login_p{
+    color: #7b8a90;
+    margin: 1rem 0 3rem 0;
+}
+.login_btn{
+    padding: 0.5rem;
+    margin: 2rem auto 0 auto;
+    width: 50%;
+    margin-bottom: 2rem;
+    background-color: #00a3e8 !important;
+    border: none;
+    font-size: 1.3rem;
+}
+.login_input{
+    padding: 1rem;
+    margin: 0 auto;
+    width: 70%;
+}
+.login_check{
+    margin: 1rem;
+    color: #7b8a90;
+}
+.login_check input{
+    opacity: .5;
+}
