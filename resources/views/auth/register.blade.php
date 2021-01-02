@@ -27,7 +27,7 @@
                             </div>
 
                             <input id="firstname" type="text" class="form-control @error('firstname') is-invalid @enderror"
-                                name="firstname" value="{{ old('firstname') }}" placeholder="{{ __('Imie') }}" required
+                                name="firstname" value="{{ old('firstname') }}" placeholder="Imie" required
                                 autocomplete="name" autofocus>
 
                             @error('firstname')
@@ -52,7 +52,7 @@
                             </div>
 
                             <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror"
-                                name="lastname" value="{{ old('lastname') }}" placeholder="{{ __('Nazwisko') }}" required
+                                name="lastname" value="{{ old('lastname') }}" placeholder="Nazwisko" required
                                 autocomplete="lastname" autofocus>
 
                             @error('lastname')
@@ -77,7 +77,7 @@
                             </div>
 
                             <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror"
-                                name="phone_number" value="{{ old('phone_number') }}" placeholder="{{ __('Numer telefonu') }}" required
+                                name="phone_number" value="{{ old('phone_number') }}" placeholder="Numer telefonu" required
                                 autocomplete="lastname" autofocus>
 
                             @error('phone_number')
@@ -99,7 +99,7 @@
                             </div>
 
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                name="email" value="{{ old('email') }}" placeholder="{{ __('Email') }}"
+                                name="email" value="{{ old('email') }}" placeholder="Email"
                                 required autocomplete="email">
 
                             @error('email')
@@ -122,7 +122,7 @@
 
                             <input id="password" type="password"
                                 class="form-control @error('password') is-invalid @enderror"
-                                placeholder="{{ __('Hasło') }}" name="password" required autocomplete="new-password">
+                                placeholder="Hasło" name="password" required autocomplete="new-password">
 
                             @error('password')
                             <span class="invalid-feedback" role="alert">
@@ -143,7 +143,7 @@
                             </div>
 
                             <input id="password-confirm" type="password" class="form-control"
-                                name="password_confirmation" placeholder="{{ __('Powtórz hasło') }}" required
+                                name="password_confirmation" placeholder="Powtórz hasło" required
                                 autocomplete="new-password">
                         </div>
 
