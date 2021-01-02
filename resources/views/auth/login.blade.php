@@ -7,7 +7,7 @@
         <div class="col-sm">
 
             <div class="login">
-                <h2 class="login_head text-center">Zaloguj się</h2>
+                <h2 class="login_head text-center">{{ __('Login') }}</h2>
                 <p class="login_p text-center">Jeżeli posiadasz już konto - zaloguj się!</p>
 
                 <form method="POST" action="{{ route('login') }}">
