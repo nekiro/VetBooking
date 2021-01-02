@@ -27,7 +27,7 @@
                             </div>
 
                             <input id="firstname" type="text" class="form-control @error('firstname') is-invalid @enderror"
-                                name="firstname" value="{{ old('firstname') }}" placeholder="{{ __('firstname') }}" required
+                                name="firstname" value="{{ old('firstname') }}" placeholder="{{ __('Imie') }}" required
                                 autocomplete="name" autofocus>
 
                             @error('firstname')
@@ -52,7 +52,7 @@
                             </div>
 
                             <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror"
-                                name="lastname" value="{{ old('lastname') }}" placeholder="{{ __('lastname') }}" required
+                                name="lastname" value="{{ old('lastname') }}" placeholder="{{ __('Nazwisko') }}" required
                                 autocomplete="lastname" autofocus>
 
                             @error('lastname')
@@ -62,6 +62,30 @@
                             @enderror
                         </div>
 
+                         <div class=" login_input input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text" style="background: transparent">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#00a3e8"
+                                        class="bi bi-person-circle" viewBox="0 0 16 16">
+                                        <path
+                                            d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z" />
+                                        <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                        <path fill-rule="evenodd"
+                                            d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror"
+                                name="phone_number" value="{{ old('phone_number') }}" placeholder="{{ __('Numer telefonu') }}" required
+                                autocomplete="lastname" autofocus>
+
+                            @error('phone_number')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
 
                         <div class=" login_input input-group">
                             <div class="input-group-prepend">
@@ -75,7 +99,7 @@
                             </div>
 
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                name="email" value="{{ old('email') }}" placeholder="{{ __('E-Mail Address') }}"
+                                name="email" value="{{ old('email') }}" placeholder="{{ __('E-Mail Adres') }}"
                                 required autocomplete="email">
 
                             @error('email')
@@ -84,7 +108,6 @@
                             </span>
                             @enderror
                         </div>
-
 
                         <div class=" login_input input-group">
                             <div class="input-group-prepend">
@@ -99,7 +122,7 @@
 
                             <input id="password" type="password"
                                 class="form-control @error('password') is-invalid @enderror"
-                                placeholder="{{ __('Password') }}" name="password" required autocomplete="new-password">
+                                placeholder="{{ __('Hasło') }}" name="password" required autocomplete="new-password">
 
                             @error('password')
                             <span class="invalid-feedback" role="alert">
@@ -107,7 +130,6 @@
                             </span>
                             @enderror
                         </div>
-
 
                         <div class=" login_input input-group">
                             <div class="input-group-prepend">
@@ -121,10 +143,9 @@
                             </div>
 
                             <input id="password-confirm" type="password" class="form-control"
-                                name="password_confirmation" placeholder="{{ __('Confirm Password') }}" required
+                                name="password_confirmation" placeholder="{{ __('Powtórz hasło') }}" required
                                 autocomplete="new-password">
                         </div>
-
 
                         <div class="form-group row mb-0 text-center">
                             <button type="submit" class="btn btn-primary login_btn">
