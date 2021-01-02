@@ -17,5 +17,4 @@ return [
     'password' => 'Podane hasło jest nieprawidłowe.',
     'throttle' => 'Za dużo błędnych logowań. Spróbuj za :seconds sekund.',
     'Verify Your Email Address' => 'Zweryfikuj swój email.',
-    'Login' => 'Zaloguj się',
 ];

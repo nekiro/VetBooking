@@ -7,7 +7,7 @@
         <div class="col-sm">
 
             <div class="login">
-                <h2 class="login_head text-center">{{ __('Login') }}</h2>
+                <h2 class="login_head text-center">Zaloguj się</h2>
                 <p class="login_p text-center">Jeżeli posiadasz już konto - zaloguj się!</p>
 
                 <form method="POST" action="{{ route('login') }}">
@@ -27,7 +27,7 @@
                         </div>
 
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                            name="email" placeholder="{{                   __('E-Mail Address') }}"
+                            name="email" placeholder="Email"
                             value="{{ old('email') }}" required autocomplete="email" autofocus>
                         @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -47,7 +47,7 @@
                         </div>
                         <input id="password" type="password"
                             class="login_input form-control @error('password') is-invalid @enderror"
-                            placeholder="{{ __('Password') }}" name="password" required autocomplete="current-password">
+                            placeholder="Hasło" name="password" required autocomplete="current-password">
 
                         @error('password')
                         <span class="invalid-feedback" role="alert">
@@ -60,15 +60,11 @@
                         <input class="form-check-input" type="checkbox" name="remember" id="remember"
                             {{ old('remember') ? 'checked' : '' }}>
 
-                        <label class="form-check-label" for="remember">
-                            {{ __('Remember Me') }}
-                        </label>
+                        <label class="form-check-label" for="remember">Zapamiętaj mnie</label>
                     </div>
 
                     <div class="form-group row mb-0 text-center">
-                        <button type="submit" class="btn btn-primary login_btn">
-                            {{ __('Login') }}
-                        </button>
+                        <button type="submit" class="btn btn-primary login_btn">Zaloguj się</button>
                     </div>
 
                 </form>
