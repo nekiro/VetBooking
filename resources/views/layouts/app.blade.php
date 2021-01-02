@@ -66,7 +66,7 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ $user = Auth::user(); $user->firstname . ' ' . $user->lastname[0] . '.' }}
+                                @php $user = Auth::user(); echo $user->firstname . ' ' . $user->lastname[0] . '.'; @endphp
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
