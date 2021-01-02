@@ -18,5 +18,4 @@ return [
     'throttled' => 'Poczekaj chwile przed następną próbą.',
     'token' => 'Token zreestowania hasła jest nieprawidłowy.',
     'user' => "Użytkownik z tym adresem email nie istnieje.",
-
 ];
