@@ -99,7 +99,7 @@
                             </div>
 
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                name="email" value="{{ old('email') }}" placeholder="{{ __('E-Mail Adres') }}"
+                                name="email" value="{{ old('email') }}" placeholder="{{ __('Email') }}"
                                 required autocomplete="email">
 
                             @error('email')
