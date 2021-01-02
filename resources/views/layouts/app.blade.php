@@ -91,7 +91,7 @@
             </div>
         </nav>
 
-        <main class="py-4 row align-items-center">
+        <main class="py-4 row">
             @yield('content')
         </main>
 

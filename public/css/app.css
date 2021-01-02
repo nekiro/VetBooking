@@ -3,19 +3,19 @@ html, body {
 }
 
 #app {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto;
-    height: 100%;
-    width: 100%;
+   display: grid;
+   grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto; 
+    height: 100vh;
 }
+/* }
 #meetings{
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
     height: 100%;
     width: 100%;
-}
+} */
 .login_container{
     background-color: #00a3e8;
 }
