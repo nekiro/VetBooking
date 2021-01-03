@@ -20,6 +20,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+
     <script src="{{ asset('js/jquery.datetimepicker.full.min.js') }}" defer></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -36,14 +37,14 @@
 
 <body>
     <div class="container-fluid vh-100" id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm row">
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm row sticky-top">
             <div class="container">
                 @guest
                 <a class="navbar-brand" href="{{ url('/') }}">
                     VetBooking
                 </a>
                 @else
-                <a class="navbar-brand" href="{{ url('meetings') }}">
+                <a class="navbar-brand" href="{{ url('book-meeting') }}">
                     VetBooking
                 </a>
                 @endguest
@@ -53,10 +54,19 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse  " id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        @auth
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('meetings') }}">
+                                Aktualne wizyty
+                            </a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('book-meeting-get') }}">
+                                Umów wizytę
+                            </a>
+                        </li>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -66,7 +76,9 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                @php $user = Auth::user(); echo $user->firstname . ' ' . $user->lastname[0] . '.'; @endphp
+                                @php $user = Auth::user(); echo $user->firstname . ' ' . $user->lastname[0] .
+                                '.';
+                                @endphp
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -76,7 +88,8 @@
                                 <a class="dropdown-item" href="{{ route('book-meeting-get') }}">
                                     Umów wizytę
                                 </a>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     Wyloguj się
                                 </a>
 
@@ -100,4 +113,5 @@
         </footer>
     </div>
 </body>
+
 </html>

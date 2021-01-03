@@ -27,8 +27,8 @@
                         </div>
 
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                            name="email" placeholder="Email"
-                            value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            name="email" placeholder="Email" value="{{ old('email') }}" required autocomplete="email"
+                            autofocus>
                         @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -46,8 +46,8 @@
                                 </svg></div>
                         </div>
                         <input id="password" type="password"
-                            class="login_input form-control @error('password') is-invalid @enderror"
-                            placeholder="Hasło" name="password" required autocomplete="current-password">
+                            class="login_input form-control @error('password') is-invalid @enderror" placeholder="Hasło"
+                            name="password" required autocomplete="current-password">
 
                         @error('password')
                         <span class="invalid-feedback" role="alert">

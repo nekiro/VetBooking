@@ -81,8 +81,7 @@ $('#namecheck').hide();
 
     var today = new Date();
     var time = (today.getHours() + 1);
-    var date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
-
+    var date = today.getFullYear() + '/0' + (today.getMonth() + 1) + '/0' + today.getDate();
     $.datetimepicker.setLocale('pl');
 
     $('#datetimepicker').datetimepicker({
@@ -112,6 +111,7 @@ $('#namecheck').hide();
 
 
     $('#datetimepicker').change(function () {
+        console.log($("#datetimepicker").val());
         if ($('#datetimepicker').val() != '') {
             $("#timepicker").removeAttr('disabled');
 
