@@ -37,7 +37,7 @@ class MeetingsController extends Controller
     public function createMeeting(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'alpha', "min:5"],
+            'name' => ['required', 'alpha_spaces', "min:5"],
             'description' => ['required'],
             'date' => ['required'],
             'time' => ['required'],
