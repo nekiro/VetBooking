@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Auth;
+use App\Models\UnregisteredMeeting;
 use App\Models\Meeting;
 
-class MeetingsController extends Controller
+class AdminMeetingsController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -17,6 +18,7 @@ class MeetingsController extends Controller
     public function __construct()
     {
         $this->middleware('verified');
+        $this->middleware('admin');
     }
 
     /**
@@ -26,12 +28,12 @@ class MeetingsController extends Controller
      */
     public function index()
     {
-        return view('meetings.meetings', ['meetings' => Meeting::where('user_id', Auth::user()->id)->get()]);
+        return view('admin.meetings', ['meetings' => Meeting::all()->all(), 'unregisteredMeetings' => UnregisteredMeeting::all()->all()]);
     }
 
     public function bookMeetingIndex()
     {
-        return view('meetings.book-meeting');
+        return view('admin.book-meeting');
     }
 
     public function createMeeting(Request $request)
@@ -41,16 +43,23 @@ class MeetingsController extends Controller
             'description' => ['required'],
             'date' => ['required'],
             'time' => ['required'],
+            'firstname' => ['required', 'alpha'],
+            'lastname' => ['required', 'alpha'],
+            'phone_number' => ['required', 'string', 'numeric', 'min:9'],
+            'petname' => ['required', 'alpha_spaces'],
         ]);
 
-        $meeting = Meeting::create([
+        $meeting = UnregisteredMeeting::create([
             'name' => $request->name,
             'description' => $request->description,
             'date' => str_replace('/', '-', $request->date . ' ' . $request->time . ':00'),
-            'user_id' => Auth::user()->id
+            'firstname' => $request->firstname,
+            'lastname' => $request->lastname,
+            'phone_number' => $request->phone_number,
+            'petname' => $request->petname,
         ]);
 
-        return redirect()->route("meetings");
+        return redirect()->route("admin-meetings");
     }
 
     public function cancelMeeting(Request $request)

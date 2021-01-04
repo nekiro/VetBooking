@@ -58,22 +58,11 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         @auth
-                        <li class="nav-item"> <a class="nav-link" href="{{ route('meetings') }}">
+                        <li class="nav-item"> <a class="nav-link" href="{{ route(Auth::user()->admin ? 'admin-meetings' : 'meetings') }}">
                                 Aktualne wizyty
                             </a></li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('book-meeting-get') }}">
-                                Umów wizytę
-                            </a>
-                        </li>
-                        @endauth
-                        @auth
-                        <!-- tutaj powinno być tylko dla admina -->
-                        <li class="nav-item"> <a class="nav-link" href="{{ route('meetings') }}">
-                                Aktualne wizyty
-                            </a></li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('book-meeting-get') }}">
+                            <a class="nav-link" href="{{ route(Auth::user()->admin ? 'admin-book-meeting-get' : 'book-meeting-get') }}">
                                 Umów wizytę
                             </a>
                         </li>
@@ -87,8 +76,9 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                @php $user = Auth::user(); echo $user->firstname . ' ' . $user->lastname[0] .
-                                '.';
+                                @php
+                                    $user = Auth::user();
+                                    echo $user->firstname . ' ' . $user->lastname[0] . '.';
                                 @endphp
                             </a>
 
@@ -113,10 +103,6 @@
         <main class="py-4 row">
             @yield('content')
         </main>
-
-        <footer class="p-4 row">
-            Footer
-        </footer>
     </div>
 </body>
 

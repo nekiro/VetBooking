@@ -24,9 +24,6 @@
                         <input id="id" name="id" value="{{ $meeting->id }}" hidden />
                         <button type="submit" class="btn btn-primary bg-primary">Odwołaj</button>
                     </form>
-
-
-
                 </td>
             </tr>
             @endforeach
