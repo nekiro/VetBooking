@@ -8,6 +8,9 @@ body {
     grid-template-rows: auto 1fr auto;
     height: 100vh;
 }
+a {
+    outline: none !important;
+}
 .bg-primary {
     background-color: #00a3e8 !important;
     border: none !important;

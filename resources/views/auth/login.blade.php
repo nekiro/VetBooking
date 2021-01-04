@@ -77,7 +77,7 @@
                 @endif
                 <hr>
                 @if (Route::has('register'))
-                <p class="login_p"> Nie masz konta? <a class="nav-link" style="display: inline-block"
+                <p class="login_p"> Nie masz konta? <a class="btn btn-link" style="display: inline-block"
                         href="{{ route('register') }}">Zarejestruj się!</a> </p>
                 @endif
             </div>

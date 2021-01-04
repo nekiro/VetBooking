@@ -67,6 +67,17 @@
                             </a>
                         </li>
                         @endauth
+                        @auth
+                        <!-- tutaj powinno być tylko dla admina -->
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('meetings') }}">
+                                Aktualne wizyty
+                            </a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('book-meeting-get') }}">
+                                Umów wizytę
+                            </a>
+                        </li>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -82,12 +93,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('meetings') }}">
-                                    Aktualne wizyty
-                                </a>
-                                <a class="dropdown-item" href="{{ route('book-meeting-get') }}">
-                                    Umów wizytę
-                                </a>
+
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     Wyloguj się
