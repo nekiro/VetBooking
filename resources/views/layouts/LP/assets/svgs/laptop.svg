@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="591.791" height="550.181" viewBox="0 0 591.791 550.181">
+  <g id="laptop" transform="translate(0 -18)">
+    <path id="Path_8" data-name="Path 8" d="M0,462.9a40.5,40.5,0,0,0,40.454,40.454h416.1A40.5,40.5,0,0,0,497.012,462.9V434H0Z" transform="translate(0 64.83)" fill="#8e8e8e"/>
+    <path id="Path_9" data-name="Path 9" d="M173.376,268.026V164H40.454A40.5,40.5,0,0,0,0,204.454V441.4H497.012V268.026ZM86.688,233.35A17.338,17.338,0,1,1,69.35,250.688,17.338,17.338,0,0,1,86.688,233.35ZM220.766,406.727H69.35V372.052H220.766Zm57.792-69.351H69.35V302.7H278.558Z" transform="translate(0 22.753)" fill="#8e8e8e"/>
+    <path id="Path_10" data-name="Path 10" d="M539.88,18H198.163L369.039,134.559Z" transform="translate(30.882 0)" fill="#00cafe"/>
+    <path id="Path_11" data-name="Path 11" d="M371.87,172.807,180,41.928v210.45H563.739V41.9Z" transform="translate(28.051 3.725)" fill="#00cafe"/>
+  </g>
+</svg>
