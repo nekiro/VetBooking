@@ -40,11 +40,11 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm row sticky-top">
             <div class="container">
                 @guest
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ route('book-meeting-get') }}">
                     VetBooking
                 </a>
                 @else
-                <a class="navbar-brand" href="{{ url('book-meeting') }}">
+                <a class="navbar-brand" href="{{ route('book-meeting-get') }}">
                     VetBooking
                 </a>
                 @endguest

@@ -16,6 +16,14 @@
             </div>
 
             <div class="form-group">
+                <label for="petname">Imię zwierzaka</label>
+                <input id="petname" type="text" class="form-control" name="petname">
+                @error('petname')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group">
                 <label for="description">Opis <br /> <span class="small">Proszę podać gatunek, rasę, wiek zwierzęcia
                         oraz w skrócie opisać czego będzie dotyczyła wizyta.</span></label>
                 <textarea id="description" name="description" class="form-control rounded-0" rows="4"

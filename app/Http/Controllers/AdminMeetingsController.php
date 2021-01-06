@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Auth;
-use App\Models\UnregisteredMeeting;
 use App\Models\Meeting;
+use App\Models\MeetingState;
 
 class AdminMeetingsController extends Controller
 {
@@ -28,7 +28,7 @@ class AdminMeetingsController extends Controller
      */
     public function index()
     {
-        return view('admin.meetings', ['meetings' => Meeting::all()->all(), 'unregisteredMeetings' => UnregisteredMeeting::all()->all()]);
+        return view('admin.meetings', ['meetings' => Meeting::all()]);
     }
 
     public function bookMeetingIndex()
@@ -49,7 +49,7 @@ class AdminMeetingsController extends Controller
             'petname' => ['required', 'alpha_spaces'],
         ]);
 
-        $meeting = UnregisteredMeeting::create([
+        $meeting = Meeting::create([
             'name' => $request->name,
             'description' => $request->description,
             'date' => str_replace('/', '-', $request->date . ' ' . $request->time . ':00'),
@@ -67,10 +67,24 @@ class AdminMeetingsController extends Controller
         $request->validate(['id' => ['required']]);
 
         $meeting = Meeting::find($request->id);
-        if ($meeting) {
-            $meeting->forceDelete();
+        if ($meeting && $meeting->state != MeetingState::CANCELLED) {
+            $meeting->state = MeetingState::CANCELLED;
+            $meeting->save();
         }
 
-        return redirect()->route("meetings");
+        return redirect()->route("admin-meetings");
+    }
+
+    public function realizeMeeting(Request $request)
+    {
+        $request->validate(['id' => ['required']]);
+
+        $meeting = Meeting::find($request->id);
+        if ($meeting && $meeting->state != MeetingState::REALIZED) {
+            $meeting->state = MeetingState::REALIZED;
+            $meeting->save();
+        }
+
+        return redirect()->route("admin-meetings");
     }
 }

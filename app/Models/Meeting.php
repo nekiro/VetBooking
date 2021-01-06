@@ -12,11 +12,14 @@ class Meeting extends Model
         'name',
         'description',
         'date',
-        'user_id',
+        'firstname',
+        'lastname',
+        'phone_number',
+        'petname',
+        'state'
     ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    protected $casts = [
+        'date' => 'datetime',
+    ];
 }

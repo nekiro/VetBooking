@@ -25,10 +25,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // meetings
 Route::get('/meetings', [App\Http\Controllers\MeetingsController::class, 'index'])->name('meetings');
 Route::post('/meetings', [App\Http\Controllers\MeetingsController::class, 'cancelMeeting'])->name('meetings-cancel');
-Route::get('/book-meeting', [App\Http\Controllers\MeetingsController::class, 'bookMeetingIndex'])->name('book-meeting-get');
-Route::post('/book-meeting', [App\Http\Controllers\MeetingsController::class, 'createMeeting'])->name('book-meeting-post');
+Route::get('/meeting/book', [App\Http\Controllers\MeetingsController::class, 'bookMeetingIndex'])->name('book-meeting-get');
+Route::post('/meeting/book', [App\Http\Controllers\MeetingsController::class, 'createMeeting'])->name('book-meeting-post');
 
 // admin
 Route::get('/admin/meetings', [App\Http\Controllers\AdminMeetingsController::class, 'index'])->name('admin-meetings');
-Route::get('/admin/book-meeting', [App\Http\Controllers\AdminMeetingsController::class, 'bookMeetingIndex'])->name('admin-book-meeting-get');
-Route::post('/admin/book-meeting', [App\Http\Controllers\AdminMeetingsController::class, 'createMeeting'])->name('admin-book-meeting-post');
+Route::get('/admin/meeting/create', [App\Http\Controllers\AdminMeetingsController::class, 'bookMeetingIndex'])->name('admin-book-meeting-get');
+Route::post('/admin/meeting/create', [App\Http\Controllers\AdminMeetingsController::class, 'createMeeting'])->name('admin-book-meeting-post');
+Route::post('/admin/meeting/cancel', [App\Http\Controllers\AdminMeetingsController::class, 'cancelMeeting'])->name('admin-cancel-meeting-post');
+Route::post('/admin/meeting/realize', [App\Http\Controllers\AdminMeetingsController::class, 'realizeMeeting'])->name('admin-realize-meeting-post');

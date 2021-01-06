@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\MeetingState;
 
 class CreateMeetingsTable extends Migration
 {
@@ -15,10 +16,14 @@ class CreateMeetingsTable extends Migration
     {
         Schema::create('meetings', function (Blueprint $table) {
             $table->id();
+            $table->string('firstname');
+            $table->string('lastname');
+            $table->string('phone_number');
             $table->string('name');
+            $table->string('petname');
             $table->string('description');
             $table->datetime('date');
-            $table->integer('user_id');
+            $table->string('state')->default(MeetingState::ACTIVE);
         });
     }
 

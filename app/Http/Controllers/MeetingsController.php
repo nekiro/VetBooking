@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Auth;
 use App\Models\Meeting;
+use App\Models\MeetingState;
 
 class MeetingsController extends Controller
 {
@@ -26,7 +27,8 @@ class MeetingsController extends Controller
      */
     public function index()
     {
-        return view('meetings.meetings', ['meetings' => Meeting::where('user_id', Auth::user()->id)->get()]);
+        $meetings = Meeting::where('phone_number', Auth::user()->phone_number)->where('state', MeetingState::ACTIVE)->get();
+        return view('meetings.meetings', ['meetings' => $meetings]);
     }
 
     public function bookMeetingIndex()
@@ -41,13 +43,19 @@ class MeetingsController extends Controller
             'description' => ['required'],
             'date' => ['required'],
             'time' => ['required'],
+            'petname' => ['required', 'alpha_spaces'],
         ]);
 
+        $user = Auth::user();
+
         $meeting = Meeting::create([
+            'firstname' => $user->firstname,
+            'lastname' => $user->lastname,
+            'phone_number' => $user->phone_number,
             'name' => $request->name,
             'description' => $request->description,
             'date' => str_replace('/', '-', $request->date . ' ' . $request->time . ':00'),
-            'user_id' => Auth::user()->id
+            'petname' => $request->petname,
         ]);
 
         return redirect()->route("meetings");
@@ -58,8 +66,9 @@ class MeetingsController extends Controller
         $request->validate(['id' => ['required']]);
 
         $meeting = Meeting::find($request->id);
-        if ($meeting) {
-            $meeting->forceDelete();
+        if ($meeting && $meeting->state != MeetingState::CANCELLED) {
+            $meeting->state = MeetingState::CANCELLED;
+            $meeting->save();
         }
 
         return redirect()->route("meetings");
