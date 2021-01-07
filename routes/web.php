@@ -33,3 +33,6 @@ Route::get('/admin/meeting/create', [App\Http\Controllers\AdminMeetingsControlle
 Route::post('/admin/meeting/create', [App\Http\Controllers\AdminMeetingsController::class, 'createMeeting'])->name('admin-book-meeting-post');
 Route::post('/admin/meeting/cancel', [App\Http\Controllers\AdminMeetingsController::class, 'cancelMeeting'])->name('admin-cancel-meeting-post');
 Route::post('/admin/meeting/realize', [App\Http\Controllers\AdminMeetingsController::class, 'realizeMeeting'])->name('admin-realize-meeting-post');
+
+// user specific
+Route::get('/settings', [App\Http\Controllers\UserController::class, 'index'])->name('user-settings');
