@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +28,11 @@ class AppServiceProvider extends ServiceProvider
     {
         Validator::extend('alpha_spaces', function ($attribute, $value) {
             return preg_match('/^[\pL\s]+$/u', $value); 
+        });
+
+        Validator::extend('current_password', function ($attribute, $value, $parameters, $validator) {
+            $user = User::find($parameters[0]);
+            return $user && Hash::check($value, $user->password);
         });
     }
 }

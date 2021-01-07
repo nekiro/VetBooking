@@ -36,3 +36,4 @@ Route::post('/admin/meeting/realize', [App\Http\Controllers\AdminMeetingsControl
 
 // user specific
 Route::get('/settings', [App\Http\Controllers\UserController::class, 'index'])->name('user-settings');
+Route::post('/settings/change-password', [App\Http\Controllers\UserController::class, 'changePassword'])->name('user-settings-change-password');
