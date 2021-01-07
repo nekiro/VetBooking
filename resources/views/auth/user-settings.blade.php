@@ -4,6 +4,15 @@
 
 <div class="container" id="settings">
     <h4 class="mt-2 mb-4">Zmień swoje dane</h4>
+    <h5>Aktualne dane: </h5>
+    <p>
+        Imię: <strong>tutaj imie</strong> <br>
+        Nazwisko: <strong>tutaj nazwisko</strong> <br>
+        Nr telefonu: <strong>tutaj Nr telefonu</strong> <br>
+        Adres e-mail: <strong>tutaj Adres e-mail</strong> <br>
+        Hasło: <strong>tutaj Hasło?</strong> <br>
+    </p>
+    <p>Oczywiście nie musisz zmieniać wszystkich danych - zmień te, które potrzebujesz</p>
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
