@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('auth\user-settings', ['user' => Auth::user()]);
+        return view('auth/user-settings', ['user' => Auth::user()]);
     }
 
     public function changePassword(Request $request)
