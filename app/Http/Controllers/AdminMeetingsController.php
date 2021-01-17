@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Auth;
 use App\Models\Meeting;
 use App\Models\MeetingState;
+use DateTime;
 
 class AdminMeetingsController extends Controller
 {
@@ -38,11 +39,13 @@ class AdminMeetingsController extends Controller
 
     public function createMeeting(Request $request)
     {
+        $date = str_replace('/', '-', $request->date . ' ' . $request->time . ':00');
+
         $request->validate([
             'name' => ['required', 'alpha_spaces', "min:5"],
             'description' => ['required'],
             'date' => ['required'],
-            'time' => ['required'],
+            'time' => ['required', 'meeting_date_check:'.$date],
             'firstname' => ['required', 'alpha'],
             'lastname' => ['required', 'alpha'],
             'phone_number' => ['required', 'string', 'numeric', 'min:9'],
@@ -52,7 +55,7 @@ class AdminMeetingsController extends Controller
         $meeting = Meeting::create([
             'name' => $request->name,
             'description' => $request->description,
-            'date' => str_replace('/', '-', $request->date . ' ' . $request->time . ':00'),
+            'date' => $date,
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'phone_number' => $request->phone_number,
