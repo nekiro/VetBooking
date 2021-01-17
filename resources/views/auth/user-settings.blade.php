@@ -14,9 +14,9 @@
     <br><br>
 
     @if (session('status'))
-        <div class="alert alert-success">
-            {{ session('status') }}
-        </div>
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
     @endif
 
     <h4 class="mt-2 mb-4 text-center">Zmień swoje hasło</h4>
@@ -33,11 +33,12 @@
                 </div>
             </div>
 
-            <input id="old_password" type="password" class="form-control" placeholder="Aktualne hasło" name="old_password" autocomplete="old_password">
-            @error('old_password')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
+            <input id="old_password" type="password" class="form-control" placeholder="Aktualne hasło"
+                name="old_password" autocomplete="old_password">
         </div>
+        @error('old_password')
+        <div class="alert alert-danger login_input">{{ $message }}</div>
+        @enderror
 
         <div class="login_input input-group">
             <div class="input-group-prepend">
@@ -49,11 +50,13 @@
                 </div>
             </div>
 
-            <input id="password" type="password" class="form-control" placeholder="Nowe hasło" name="password" autocomplete="new-password">
-            @error('password')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
+            <input id="password" type="password" class="form-control" placeholder="Nowe hasło" name="password"
+                autocomplete="new-password">
+
         </div>
+        @error('password')
+        <div class="alert alert-danger login_input">{{ $message }}</div>
+        @enderror
 
         <div class="login_input input-group">
             <div class="input-group-prepend">
@@ -65,11 +68,13 @@
                 </div>
             </div>
 
-            <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" placeholder="Powtórz nowe hasło" autocomplete="new-password">
-            @error('password_confirmation')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
+            <input id="password_confirmation" type="password" class="form-control" name="password_confirmation"
+                placeholder="Powtórz nowe hasło" autocomplete="new-password">
+
         </div>
+        @error('password_confirmation')
+        <div class="alert alert-danger login_input">{{ $message }}</div>
+        @enderror
 
         <div class="form-group row mb-0 text-center">
             <button type="submit" class="btn btn-primary login_btn">
