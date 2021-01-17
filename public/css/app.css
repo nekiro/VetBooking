@@ -43,7 +43,7 @@ a {
     border-radius: 20px;
 }
 .loginOrRegister a {
-    color: #00a3e8;
+    color: #00a3e8 !important;
 }
 .login {
     background-color: #fff;
