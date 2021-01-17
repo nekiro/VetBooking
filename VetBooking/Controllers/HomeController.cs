@@ -33,21 +33,27 @@ namespace VetBooking.Controllers
         {
             return View();
         }
-        
+
         public async Task<IActionResult> Users(string FirstName, string LastName, string Email)
         {
-            if (!string.IsNullOrEmpty(FirstName) || !string.IsNullOrEmpty(LastName) || !string.IsNullOrEmpty(Email))
+            VetBookingUser user = await _userManager.FindByIdAsync(_userManager.GetUserId(this.User));
+            if (user == null)
             {
-                var users = await _context.VetBookingUsers.Where(u => u.FirstName == FirstName || u.LastName == LastName || u.Email == Email).ToListAsync();
-                return View(users);
+                return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
+            if (user.IsAdmin)
+            {
+                if (!string.IsNullOrEmpty(FirstName) || !string.IsNullOrEmpty(LastName) || !string.IsNullOrEmpty(Email))
+                {
+                    var users = await _context.VetBookingUsers.Where(u => u.FirstName == FirstName || u.LastName == LastName || u.Email == Email).ToListAsync();
+                    return View(users);
+                }
+                return View(await _context.VetBookingUsers.ToListAsync());
             }
 
-            return View(await _context.VetBookingUsers.ToListAsync());
-        }
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 
-        public IActionResult Privacy()
-        {
-            return View();
+
         }
 
         public async Task<IActionResult> Meeting()
@@ -89,6 +95,14 @@ namespace VetBooking.Controllers
             return View();
         }
 
+
+        public async Task<IActionResult> DeleteFromHistory(OldMeeting meeting)
+        {
+            _context.MeetingsHistory.Remove(new OldMeeting() { ID = meeting.ID });
+            await _context.SaveChangesAsync();
+            return View();
+        }
+
         public async Task<IActionResult> MoveToHistory(Meeting meeting)
         {
             // moves meeting to already due meetings
@@ -97,6 +111,7 @@ namespace VetBooking.Controllers
             await _context.SaveChangesAsync();
             return View();
         }
+
 
         public async Task<IActionResult> ConfirmEmail(string userId)
         {

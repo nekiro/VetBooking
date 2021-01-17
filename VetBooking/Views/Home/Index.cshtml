@@ -1,13 +1,10 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿
+@{ ViewData["Title"] = "Strona główna";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-
-
-    
+<div class="verAndHorCenter">
+    <div>
+        <h5 class="verAndHorCenter"><span class="badge"><i class="fas fa-check fa-2x" style="color: #9CCC65;"></i></span>Zalogowałeś się pomyślnie, zapraszamy do umówienia się bądź sprawdzenia aktualnych <strong class="mr-1 ml-1">Twoich</strong> wizyt</h5>
+        <p class="text-center mt-2"> Wizyty sprawdzisz w panelu <a asp-area="" asp-controller="Home" asp-action="Meeting">Wizyt</a></p>
+    </div>
 </div>
-
-

@@ -44,73 +44,12 @@
                         </td>
                         <td>
                             @Html.ActionLink("Odwołaj", "Delete", @item)
-                            <a data-toggle="modal" data-target="#exampleModal" class="ml-2" style="color: blue; text-decoration: underline; cursor: pointer; ">Detale</a>
                             @Html.ActionLink("Zrealizuj", "MoveToHistory", @item)
                         </td>
                     </tr>
                     }
                 </tbody>
             </table>
-        </div>
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Przykładowa wizyta</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <dl class="dl-horizontal">
-                            <dt>
-                                Nazwa
-                            </dt>
-
-                            <dd>
-                                przykład nazwy
-                            </dd>
-
-                            <dt>
-                                Data
-                            </dt>
-
-                            <dd>
-                                przykład daty
-                            </dd>
-
-                            <dt>
-                                Imię i nazwisko
-                            </dt>
-
-                            <dd>
-                                przykładowe imię i nazwisko
-                            </dd>
-
-                            <dt>
-                                Numer telefonu
-                            </dt>
-
-                            <dd>
-                                przykładowy numer telefonu
-                            </dd>
-
-                            <dt>
-                                Opis
-                            </dt>
-
-                            <dd>
-                                przykładowy opis
-                            </dd>
-
-                        </dl>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div class="tab-pane fade" id="profile">
@@ -138,7 +77,7 @@
                                 @Html.DisplayFor(modelItem => item.Date)
                             </td>
                             <td>
-                                <a data-toggle="modal" data-target="#exampleModal" class="ml-2" style="color: blue; text-decoration: underline; cursor: pointer; ">Detale</a>
+                                @Html.ActionLink("Usuń na zawsze", "DeleteFromHistory", @item)
                             </td>
                         </tr>
                     }
