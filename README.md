@@ -35,8 +35,24 @@ html/css/js
 
 1. Open repository with vscode or console (whatever you like)
 2. Execute commands:
-    ```
-    php artisan migrate:fresh
-    php artisan db:seed
-    php artisan serve
-    ```
+
+```
+php artisan migrate:fresh
+php artisan db:seed
+php artisan serve
+```
+
+OR using docker:
+
+```
+cd docker
+docker-compose up --build
+docker-compose exec php /bin/bash
+composer install
+php artisan migrate:fresh
+php artisan db:seed
+```
+
+Move whole laravel project into docker/src
+
+Site is hosted at 127.0.0.1:80/
