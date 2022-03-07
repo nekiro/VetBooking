@@ -2,7 +2,7 @@
 
 ## What is it?
 
-Example website that allows you booking meetings to veterinarian.  
+Website that allows you to make appointments to veterinarian.  
 You can check demo [here](https://vetbooking.herokuapp.com/).  
 Admin credentials: admin@admin/admin
 
